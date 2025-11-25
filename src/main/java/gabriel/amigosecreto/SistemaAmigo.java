@@ -49,7 +49,6 @@ public class SistemaAmigo {
             }
         }
 
-
         if (pessoaEncontrada == null) {
             throw new AmigoInexistenteException(
                     "Não existe pessoa cadastrada com o e-mail: " + emailDaPessoa);
@@ -57,7 +56,6 @@ public class SistemaAmigo {
 
         pessoaEncontrada.setEmailAmigoSecreto(emailAmigoSorteado);
     }
-
 
     public String pesquisaAmigoSecretoDe(String emailPessoa) throws AmigoInexistenteException {
         for (Amigo amigo : amigos) {
@@ -74,12 +72,10 @@ public class SistemaAmigo {
         for (Mensagem m : mensagens) {
             if (m.ehAnonima()) {
                 anonima.add(m);
-
             }
         }
         return anonima;
     }
-
     public void enviarMensagensparaTodos(String texto, String emailRemetente, boolean ehAnonima) {
         Mensagem m = new Mensagem(texto, emailRemetente, ehAnonima) {
             public String getTextoCompletoAExibir() {
@@ -92,7 +88,6 @@ public class SistemaAmigo {
         };
         mensagens.add(m);
     }
-
     public void enviarMensagensParaAlguém(String texto, String emailRemetente, String emailDestinatario, boolean ehAnonima) {
         Mensagem m = new Mensagem(texto, emailRemetente, ehAnonima) {
             public String getTextoCompletoAExibir() {
@@ -105,7 +100,6 @@ public class SistemaAmigo {
         };
         mensagens.add(m);
     }
-
     public void sortearAmigo() throws AmigoNaoSorteadoException {
         List<Amigo> aindaNaoSorteados = new ArrayList<>(amigos);
         for (Amigo at : amigos) {
@@ -118,14 +112,8 @@ public class SistemaAmigo {
                 }
                 posicaoDaListaSorteada = (int) (Math.random() * aindaNaoSorteados.size());
                 sorteado = aindaNaoSorteados.get(posicaoDaListaSorteada);
-
             }
             at.setEmailAmigoSecreto(sorteado.getEmail());
-
         }
-
-
     }
-
-
 }
